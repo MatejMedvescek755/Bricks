@@ -95,14 +95,17 @@ function bricks(){
 
 function check(array){
     bricksCheck(array);
+    //check left wall
     if(position.x-10 <= 0){
         move.Right=true;
         move.HardLeft=false;
     }
+    //check right wall
     if(position.x >= canvas.width-20){
         move.Right=false;
         move.HardRight=false;
     }
+
     if(position.y-10 <= 0){
         move.Down=true;
         playerTwo++;
@@ -119,32 +122,50 @@ function check(array){
    if(position.x-Brick.x < 100 && position.y == Brick.y-20 && position.x-Brick.x > 0){
         move.Down=false;
     }
+    if(positionTwo.x-Brick.x < 100 && positionTwo.y == Brick.y-20 && positionTwo.x-Brick.x > 0){
+        moveTwo.Down=false;
+    }
     //second 
+
+    //check left wall
     if(positionTwo.x-10 <= 0){
         moveTwo.Right=true;
         moveTwo.HardLeft=false;
     }
+    //check right wall
     if(positionTwo.x >= canvas.width-20){
         moveTwo.Right=false;
         moveTwo.HardRight=false;
     }
+    //check top wall
     if(positionTwo.y-10 <= 0){
         moveTwo.Down=true;
         playerTwo++;
     }
+
+    //check if it hit the left side of the paddle 
     if(positionTwo.x-BrickTwo.x < 30 && positionTwo.y == BrickTwo.y-20 && positionTwo.x-BrickTwo.x > 0){
         moveTwo.Down=false;
+        moveTwo.HardRight=false;
         moveTwo.HardLeft=true;
         moveTwo.HardRight= false;
     }
+    //check if it hit the right side of the paddle
     if(positionTwo.x-BrickTwo.x < 100 && positionTwo.y == BrickTwo.y-20 && positionTwo.x-BrickTwo.x > 70){
         moveTwo.Down=false;
         moveTwo.HardRight=true;
-    }  
-   if(positionTwo.x-BrickTwo.x < 100 && positionTwo.y == BrickTwo.y-20 && positionTwo.x-BrickTwo.x > 0){
-        moveTwo.Down=false;
+        moveTwo.hardLeft=false;
+        moveTwo.right=true; 
     }
-    if(position.y-10 == canvas.height && position.x-Brick.x > 100){
+    //check if ball hit the paddle
+   if(positionTwo.x-(BrickTwo.x) < 100 && positionTwo.y == BrickTwo.y+20 && positionTwo.x-BrickTwo.x > 0){
+        moveTwo.Down=true;
+    }
+    if(position.x-(BrickTwo.x) < 100 && position.y == BrickTwo.y+20 && position.x-BrickTwo.x > 0){
+        move.Down=true;
+    }
+
+    if(position.y+10 == canvas.height && position.x-Brick.x > 100){
         move.Down = false;
     }
     if(position.x < Brick.x && position.y-10 == canvas.height){
@@ -152,7 +173,7 @@ function check(array){
         move.Down= false;
     }
      if(position.y == 800-20){
-         move.Down= false;
+         move.Down = false;
          playerOne++;
      }
      if(positionTwo.y == 800-20){
@@ -287,10 +308,18 @@ setInterval(()=>{
     draw();
     if(playerOne > 9 || playerTwo >9){
         clearInterval();
-        if(playerOne == 10)
-            alert("player 2 wins");
-        else
-            alert("player 1 wins");
+        if(playerOne == 10){
+            alert("player 2 wins")
+            playerOne=0;
+            playerTwo=0;
+                window.location.reload();
+        }        
+        else{
+            alert("player 2 wins")
+            playerOne=0;
+            playerTwo=0;
+            window.location.reload();
+        }   
     }
 },40); 
 
