@@ -308,12 +308,16 @@ setInterval(()=>{
     draw();
     if(playerOne > 9 || playerTwo >9){
         clearInterval();
-        if(playerOne == 10)
-            if(confirm("player 2 wins")){
-                window.reload();
-            }
-        else
-            confirm("player 1 wins");
+        if(playerOne == 10){
+            alert("player 2 wins")
+                playerOne=0;
+                playerTwo=0;
+        }        
+        else{
+            alert("player 2 wins")
+            playerOne=0;
+            playerTwo=0;
+        }   
     }
 },40); 
 
