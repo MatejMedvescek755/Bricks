@@ -10,7 +10,7 @@
         <div id="canvDiv"><canvas id="canvas"></canvas></div>
         <div id="score">
             <div id="p2score" class="score"></div>
-            <div id="timer" class="score"></div>
+            <div id="timer" class="score">time:0</div>
             <div id="p1score" class="score"></div>
         </div>
         <script src="script.js"></script>
