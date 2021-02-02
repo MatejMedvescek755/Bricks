@@ -310,13 +310,15 @@ setInterval(()=>{
         clearInterval();
         if(playerOne == 10){
             alert("player 2 wins")
-                playerOne=0;
-                playerTwo=0;
+            playerOne=0;
+            playerTwo=0;
+                window.location.reload();
         }        
         else{
             alert("player 2 wins")
             playerOne=0;
             playerTwo=0;
+            window.location.reload();
         }   
     }
 },40); 
